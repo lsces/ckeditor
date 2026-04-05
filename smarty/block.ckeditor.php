@@ -37,8 +37,8 @@ function smarty_block_ckeditor($params, $content, &$smarty)
 			$smarty->trigger_error('ckeditor: required parameter "name" missing');
 		}
 		
-		static $base_arguments = array();
-		static $config_arguments = array();
+		static $base_arguments = [];
+		static $config_arguments = [];
 		
 		// Test if editor has been loaded before
 		if(!count($base_arguments)) $init = TRUE;
@@ -79,7 +79,7 @@ function smarty_block_ckeditor($params, $content, &$smarty)
 		
 		if($init)
 		{
-			$out .= '<script type="text/javascript" src="' . $base_arguments['BasePath'] . 'ckeditor.js"></script>';
+			$out .= '<script src="' . $base_arguments['BasePath'] . 'ckeditor.js"></script>';
 		}
 		
 		$out .= "\n<script type=\"text/javascript\">\n";
