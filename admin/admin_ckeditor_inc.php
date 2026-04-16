@@ -42,7 +42,7 @@ $formSkin = array( 'ckedit_skin' => array(
 		)
 );
 $gBitSmarty->assign( 'formSkin', $formSkin );
-$skins = array_flip( scandir( CKEDITOR_PKG_PATH.'ckeditor/skins/' ) );
+$skins = array_flip( scandir( CKEDITOR_PKG_PATH.'skins/' ) );
 foreach( array( '.', '..' ) as $dir ) {
 	if( isset( $skins[$dir] ) ) {
 		unset( $skins[$dir] );
