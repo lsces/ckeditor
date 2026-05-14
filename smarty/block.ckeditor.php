@@ -32,59 +32,59 @@
 function smarty_block_ckeditor($params, $content, &$smarty)
 {
 	if (isset($content)) {
-		if(!isset($params['name']) || empty($params['name']))
+		if(!isset($params["name"]) || empty($params["name"]))
 		{
 			$smarty->trigger_error('ckeditor: required parameter "name" missing');
 		}
-		
+
 		static $base_arguments = [];
 		static $config_arguments = [];
-		
+
 		// Test if editor has been loaded before
 		if(!count($base_arguments)) $init = TRUE;
 		else $init = FALSE;
-		
+
 		// BasePath must be specified once.
-		if(isset($params['BasePath']))
+		if(isset($params["BasePath"]))
 		{
-			$base_arguments['BasePath'] = $params['BasePath'];
+			$base_arguments["BasePath"] = $params["BasePath"];
 		}
-		else if(empty($base_arguments['BasePath']))
+		else if(empty($base_arguments["BasePath"]))
 		{
-			$base_arguments['BasePath'] = '/ckeditor/jscripts/';
+			$base_arguments["BasePath"] = "/ckeditor/jscripts/";
 		}
-		
-		$base_arguments['InstanceName'] = $params['name'];
-		
-		$base_arguments['Value'] = $content;
+
+		$base_arguments["InstanceName"] = $params["name"];
+
+		$base_arguments["Value"] = $content;
 
 		/* Text Area Compatibility */
-		if(isset($params['width'])) $base_arguments['Width'] = $params['width'];
-		if(isset($params['height'])) $base_arguments['Height'] = $params['height'];
-		else $base_arguments['Height'] = 300;
+		if(isset($params["width"])) $base_arguments["Width"] = $params["width"];
+		if(isset($params["height"])) $base_arguments["Height"] = $params["height"];
+		else $base_arguments["Height"] = 300;
 
 		/* TODO: Allow setting of these in the admin page */
-		if(isset($params['ToolbarSet'])) $base_arguments['ToolbarSet'] = $params['ToolbarSet'];
+		if(isset($params["ToolbarSet"])) $base_arguments["ToolbarSet"] = $params["ToolbarSet"];
 		else
-			$base_arguments['ToolbarSet'] = 'Bitweaver';
+			$base_arguments["ToolbarSet"] = "Bitweaver";
 
-		if(isset($params['CheckBrowser'])) $base_arguments['CheckBrowser'] = $params['CheckBrowser'];
-		if(isset($params['DisplayErrors'])) $base_arguments['DisplayErrors'] = $params['DisplayErrors'];
+		if(isset($params["CheckBrowser"])) $base_arguments["CheckBrowser"] = $params["CheckBrowser"];
+		if(isset($params["DisplayErrors"])) $base_arguments["DisplayErrors"] = $params["DisplayErrors"];
 
 		// Use all other parameters for the config array (replace if needed)
 		$other_arguments = array_diff_assoc($params, $base_arguments);
 		$config_arguments = array_merge($config_arguments, $other_arguments);
-		unset($config_arguments['name']);
-		$out = '';
-		
+		unset($config_arguments["name"]);
+		$out = "";
+
 		if($init)
 		{
-			$out .= '<script src="' . $base_arguments['BasePath'] . 'ckeditor.js"></script>';
+			$out .= '<script src="' . $base_arguments["BasePath"] . 'ckeditor.js"></script>';
 		}
-		
+
 		$out .= "\n<script type=\"text/javascript\">\n";
-		$out .= "var oCKeditor = new CKeditor('" . $base_arguments['InstanceName'] . "');\n";
-		
+		$out .= "var oCKeditor = new CKeditor('" . $base_arguments["InstanceName"] . "');\n";
+
 		foreach($base_arguments as $key => $value)
 		{
 			if(!is_bool($value))
@@ -94,7 +94,7 @@ function smarty_block_ckeditor($params, $content, &$smarty)
 			}
 			$out .= "oCKeditor.$key = $value; ";
 		}
-		
+
 		foreach($config_arguments as $key => $value)
 		{
 			if(!is_bool($value))
@@ -103,7 +103,7 @@ function smarty_block_ckeditor($params, $content, &$smarty)
 			}
 			$out .= "oCKeditor.Config[\"$key\"] = $value; ";
 		}
-		
+
 		$out .= "\noCKeditor.Create();\n";
 		$out .= "</script>\n";
 	}

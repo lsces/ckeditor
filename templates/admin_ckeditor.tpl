@@ -6,7 +6,7 @@
 				<div class="form-group">
 					{forminput label="checkbox"}
 						{html_checkboxes name="$item" values="y" checked=$gBitSystem->getConfig($item) labels=false id=$item} {tr}{$output.label}{/tr}
-						{formhelp note=$output.note page=$output.page}
+						{formhelp note=$output.note page=$output.page ?? ''}
 					{/forminput}
 				</div>
 			{/foreach}
