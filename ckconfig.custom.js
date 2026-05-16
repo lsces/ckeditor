@@ -1,24 +1,26 @@
-﻿// $header$
+// $header$
+// Custom CKEditor configuration — copy of ckconfig.bitweaver.js as a starting point.
+// Enable via admin: ckeditor_custom_config feature (theme override at styles/<theme>/ckeditor/ckconfig.custom.js).
 
 CKEDITOR.editorConfig = function( config ) {
 
-	//Disable core plugins not required
-	config.removePlugins = 'scayt';
+	// Remove bundled plugins not required
+	// config.removePlugins = 'elementspath';
 
-	//Enable additional plugins from the bw library of addons
-	config.extraPlugins = 'aspell';
+	// Enable additional plugins
+	// config.extraPlugins = 'bt_table,bootstrapTabs';
 
 	/* Start of BITWEAVER toolbar sets */
 	config.toolbar_Supported = [
 		['Source','-','Preview'],
-		['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellCheck'],
+		['Cut','Copy','Paste','PasteText','PasteFromLibreOffice','-','Print'],
 		['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
 		'/',
 		['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
 		['NumberedList','BulletedList','-','Outdent','Indent'],
 		['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
 		['Link','Unlink','Anchor'],
-		['Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+		['Table','HorizontalRule','SpecialChar'],
 		'/',
 		['Styles','Format','Font','FontSize'],
 		['TextColor','BGColor'],
@@ -29,33 +31,33 @@ CKEDITOR.editorConfig = function( config ) {
 		['Bold','Italic','Underline'],
 		['NumberedList','BulletedList'],
 		['Link','Unlink','Anchor'],
-		['Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+		['Table','HorizontalRule','SpecialChar'],
 		['Maximize','-','About']
 	];
 
 	config.toolbar_Intermediate = [
-		['Cut','Copy','Paste','PasteText','PasteFromWord'],
+		['Cut','Copy','Paste','PasteText','PasteFromLibreOffice'],
 		['Undo','Redo','-','Find','Replace','-','SelectAll'],
 		'/',
 		['Bold','Italic','Underline'],
 		['NumberedList','BulletedList','-','Outdent','Indent'],
 		['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
 		['Link','Unlink','Anchor'],
-		['Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+		['Table','HorizontalRule','SpecialChar'],
 		'/',
 		['TextColor','BGColor'],
 		['Maximize','-','About']
 	];
 
 	config.toolbar_Advanced = [
-	    ['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
-	    ['NumberedList','BulletedList','-','Outdent','Indent'],
-	    ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-	    ['Link','Unlink','Anchor'],
-	    ['Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
-	    '/',
+		['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
+		['NumberedList','BulletedList','-','Outdent','Indent'],
+		['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+		['Link','Unlink','Anchor'],
+		['Table','HorizontalRule','SpecialChar'],
+		'/',
 		['Source','-','Preview'],
-	  	['Cut','Copy','Paste','PasteText','PasteFromWord'],
+		['Cut','Copy','Paste','PasteText','PasteFromLibreOffice'],
 		['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
 		'/',
 		['Styles','Format','Font','FontSize'],
@@ -63,16 +65,11 @@ CKEDITOR.editorConfig = function( config ) {
 		['Maximize','ShowBlocks','-','About']
 	];
 
-	// to add split plugin add this to array of tools in your selected ToolbarSet
-	//	['Split']
-	// to add attachment plugin add this to array of tools in your selected ToolbarSet
-	//	['Attachment']
-
 	/* END of BITWEAVER toolbar sets */
 
-	// Lock resize function to bitweaver window.
 	config.resize_minHeight = 300;
 	config.resize_dir = 'vertical';
 	config.autoParagraph = false;
+	config.enterMode = CKEDITOR.ENTER_P;
 
 }; // End CKEDITOR.editorConfig function
