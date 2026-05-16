@@ -4,9 +4,6 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
-	// Define changes to default configuration here. For example:
-	// config.language = 'fr';
-	// config.uiColor = '#AADC6E';
-	//config.apiKey = "ELzjEO8Hfd3fPP738CYRMQSw";
-	//config.extraPlugins = "N1ED-editor";
+	config.skin = 'moonocolor';
+	config.removePlugins = 'scayt,wsc,pastefromword';
 };
