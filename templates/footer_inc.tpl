@@ -2,6 +2,7 @@
 {if $gBitUser->isRegistered() }
 	<script nonce="{$cspNonce}">
     	CKEDITOR.replace( '{$smarty.const.LIBERTY_TEXT_AREA}', {
+			extraAllowedContent: 'pre(bwcode)[data-bwcode-params]',
 			toolbarGroups: [
 			{if $gBitSystem->getConfig('ckedit_toolbars') eq 'Full'}
 				{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },

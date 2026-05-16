@@ -16,6 +16,10 @@ define( "CKEDITOR_PKG_ADMIN_PATH", BIT_ROOT_PATH . basename( $pRegisterHash["pac
 
 $gBitSystem->registerPackage( $pRegisterHash );
 
+if( $gBitSystem->isPackageActive( 'ckeditor' ) ) {
+	require_once CKEDITOR_PKG_INCLUDE_PATH . 'code_blocks_inc.php';
+}
+
 if( $gBitSystem->isPackageActive( "ckeditor" ) && $gBitUser->isRegistered() && $gBitUser->hasPermission( "p_liberty_enter_html" ) ){
 	if( defined( "IS_LIVE" ) && IS_LIVE ) {
 		$gBitThemes->loadJavascript( CKEDITOR_PKG_PATH."ckeditor.js", false, 600, false );
