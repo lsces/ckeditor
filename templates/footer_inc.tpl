@@ -1,8 +1,10 @@
 {strip}
-{if $gBitUser->isRegistered() }
+{if $gBitSystem->isPackageActive('ckeditor')}
 	<script nonce="{$cspNonce}">
+	if( document.getElementById( '{$smarty.const.LIBERTY_TEXT_AREA}' ) ) {ldelim}
     	CKEDITOR.replace( '{$smarty.const.LIBERTY_TEXT_AREA}', {
 			extraAllowedContent: 'pre(bwcode)[data-bwcode-params]',
+			disableNativeSpellChecker: false,
 			toolbarGroups: [
 			{if $gBitSystem->getConfig('ckedit_toolbars') eq 'Full'}
 				{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
@@ -53,6 +55,7 @@
 			{/if}
 			],
 		});
+	{rdelim}
 	</script>
 	{/if}
 {/strip}
